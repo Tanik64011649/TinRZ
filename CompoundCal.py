@@ -60,12 +60,39 @@ class Interest:
             initBalance = float(var1.get())
             NumYears = int(var2.get())
 
-            for rate in range(-6, 9, 3):
+            if initBalance <= 100000:
+                rate = 1.5
                 b = balance(initBalance, rate, NumYears)
-                print("Rate: %2d%%, Balance: £%.2f " % (rate, b))
+                print("Rate: %2d%%, Balance: %.2f baht " % (rate, b))
                 iRate = str(rate)
                 iB = str(b)
-                self.txtRateTable.insert(END, "\nRate: " + (iRate) + " % " + "Balance: " + (' £%.2f' % float(iB)) + "\n\n")
+                self.txtRateTable.insert(END, "\nRate: " +  " % " + "Balance: " + ('%.2f baht' % float(iB)) + " \nRecommend: SCB, KrungThai, KrungSri, Kbank" + "\n\n" )
+            else:
+                rate = 1.2
+                b = balance(initBalance, rate, NumYears)
+                print("Rate: %2d%%, Balance: %.2f baht " % (rate, b))
+                iRate = str(rate)
+                iB = str(b)
+                self.txtRateTable.insert(END, "\nRate: " +  " % " + "Balance: " + ('%.2f baht' % float(iB)) + " \nRecommend: SCB, KrungThai, LHBank" + "\n\n")
+            
+            
+
+
+        
+        
+        
+        
+        #def table():
+            #self.txtRateTable.delete("1.0", END)
+            #initBalance = float(var1.get())
+            #NumYears = int(var2.get())
+
+            #for rate in range(-6, 9, 3):
+                #b = balance(initBalance, rate, NumYears)
+                #print("Rate: %2d%%, Balance: %.2f baht " % (rate, b))
+                #iRate = str(rate)
+                #iB = str(b)
+                #self.txtRateTable.insert(END, "\nRate: " + (iRate) + " % " + "Balance: " + ('%.2f baht' % float(iB)) + "\n\n")
 
 
 
