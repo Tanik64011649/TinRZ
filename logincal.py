@@ -128,7 +128,7 @@ class Ui_Logincal(object):
 
             if len(username) == 0 or len(password) == 0:
                     self.error.setText("Please fill in all inputs")
-            elif username != "helloworld" or password != "12345678":
+            elif username != "sunshiro" or password != "12345678":
                     self.error.setText("Incorrect username or password")
             else:
                   self.window = QtWidgets.QMainWindow()
