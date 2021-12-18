@@ -40,6 +40,15 @@ class Interest:
 
         """=======================================================================Functions==============================================================================="""
 
+        rate_list = []
+        with open("Rate.txt", "r") as file:
+            for line in file:
+                rate_list.append(line[7:])
+        rate1 = int(rate_list[0])
+        rate2 = int(rate_list[1])
+
+        
+        
         def Reset():
             var1.set("")
             var2.set("")
@@ -60,46 +69,26 @@ class Interest:
             initBalance = float(var1.get())
             NumYears = int(var2.get())
 
-            if initBalance <= 100000:
-                rate = 1.5
+            if 0 < initBalance <= 100000:
+                rate = rate1
                 b = balance(initBalance, rate, NumYears)
                 print("Rate: %2d%%, Balance: %.2f baht " % (rate, b))
                 iRate = str(rate)
                 iB = str(b)
-                self.txtRateTable.insert(END, "\nRate: " +  " % " + "Balance: " + ('%.2f baht' % float(iB)) + " \nRecommend: SCB, KrungThai, KrungSri, Kbank" + "\n\n" )
+                self.txtRateTable.insert(END, "\nRate: " + (iRate) + " % " + "Balance: " + ('%.2f baht' % float(iB)) + " \n\nRecommended Bank: SCB, KrungThai, KrungSri, Kbank")
             else:
-                rate = 1.2
+                rate = rate2
                 b = balance(initBalance, rate, NumYears)
                 print("Rate: %2d%%, Balance: %.2f baht " % (rate, b))
                 iRate = str(rate)
                 iB = str(b)
-                self.txtRateTable.insert(END, "\nRate: " +  " % " + "Balance: " + ('%.2f baht' % float(iB)) + " \nRecommend: SCB, KrungThai, LHBank" + "\n\n")
+                self.txtRateTable.insert(END, "\nRate: " + (iRate) + " % " + "Balance: " + ('%.2f baht' % float(iB)) + " \n\nRecommended Bank: SCB, KrungThai, LHBank")
             
             
 
 
         
         
-        
-        
-        #def table():
-            #self.txtRateTable.delete("1.0", END)
-            #initBalance = float(var1.get())
-            #NumYears = int(var2.get())
-
-            #for rate in range(-6, 9, 3):
-                #b = balance(initBalance, rate, NumYears)
-                #print("Rate: %2d%%, Balance: %.2f baht " % (rate, b))
-                #iRate = str(rate)
-                #iB = str(b)
-                #self.txtRateTable.insert(END, "\nRate: " + (iRate) + " % " + "Balance: " + ('%.2f baht' % float(iB)) + "\n\n")
-
-
-
-
-
-
-
         """====================================================================Entry and Label============================================================================"""
 
         self.lblTitle = Label(LeftFrame0, text="Interest Rate Calculator", padx=17, pady=4, bd=1, font=('Times New Roman', 40, 'bold'), bg="medium purple", width=20)
@@ -107,17 +96,17 @@ class Interest:
 
         self.lblBalance = Label(LeftFrame2, text="Please enter the initial balance:", font=('Times New Roman', 20, 'bold'), bd=2, justify=LEFT)
         self.lblBalance.grid(row=0, column=0, padx=15)
-        self.txtBalance = Entry(LeftFrame2, textvariable=var1, font=('Times New Roman', 14, 'bold'), bd=5, width=14, justify=RIGHT)
+        self.txtBalance = Entry(LeftFrame2, textvariable=var1, font=('Times New Roman', 20, 'bold'), bd=5, width=14, justify=RIGHT)
         self.txtBalance.grid(row=0, column=1, padx=3, pady=10)
 
         self.lblYear = Label(LeftFrame2, text="Please enter the Number of years:", font=('Times New Roman', 20, 'bold'), bd=2, justify=LEFT)
-        self.lblYear.grid(row=1, column=0)
-        self.txtYear = Entry(LeftFrame2, textvariable=var2, font=('Times New Roman', 14, 'bold'), bd=5, width=14, justify=RIGHT)
+        self.lblYear.grid(row=1, column=0, padx=15)
+        self.txtYear = Entry(LeftFrame2, textvariable=var2, font=('Times New Roman', 20, 'bold'), bd=5, width=14, justify=RIGHT)
         self.txtYear.grid(row=1, column=1, padx=3, pady=10)
 
         """==============================================================================================================================================================="""
 
-        self.lblRateTable = Label(RightFrame1, font=('Times New Roman', 20, 'bold'), text="\t Pay Back").grid(row=0, column=0)
+        self.lblRateTable = Label(RightFrame1, font=('Times New Roman', 20, 'bold'), text="\t PayBack").grid(row=0, column=0)
         self.txtRateTable = Text(RightFrame1, height=15, width=52, bd=16, font=('Times New Roman', 12, 'bold'))
         self.txtRateTable.grid(row=1, column=0, columnspan=3)
 
